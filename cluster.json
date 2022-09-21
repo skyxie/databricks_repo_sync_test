@@ -1,0 +1,20 @@
+{
+    "spark_version": "9.1.x-cpu-ml-scala2.12",
+    "num_workers": 2,
+    "node_type_id": "m5a.large",
+    "aws_attributes": {
+        "instance_profile_arn": "$DATABRICKS_ROLE",
+        "zone_id": "auto",
+        "first_on_demand": 1,
+        "availability": "SPOT_WITH_FALLBACK",
+        "spot_bid_price_percent": 100,
+        "ebs_volume_type": "GENERAL_PURPOSE_SSD",
+        "ebs_volume_count": 1,
+        "ebs_volume_size": 100
+    },
+    "custom_tags": {
+        "enigma:squad": "mle",
+        "enigma:environment": "dev",
+        "enigma:service": "mlflow"
+    }
+}

@@ -1,0 +1,5 @@
+name: databricks_repo_sync_test
+conda_env: conda.yml
+entry_points:
+  main:
+    command: "python main.py"
