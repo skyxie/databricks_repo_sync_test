@@ -16,5 +16,9 @@
         "enigma:squad": "mle",
         "enigma:environment": "dev",
         "enigma:service": "mlflow"
+    },
+    "spark_env_vars": {
+        "PIP_EXTRA_INDEX_URL": "$PIP_EXTRA_INDEX_URL",
+        "PIP_TRUSTED_HOST": "$PIP_TRUSTED_HOST"
     }
 }
