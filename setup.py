@@ -9,5 +9,5 @@ setup(
     author="Machine Learning Engineering",
     author_email="ml_engineering_team@enigma.com",
     description="Python library to test UDFs in MLFlow Project.",
-    packages=find_packages("databricks_repo_sync_test"),
+    packages=find_packages(exclude="mlflow_project_with_package"),
 )
