@@ -15,7 +15,8 @@ def main():
     spark = SparkSession.builder.getOrCreate()
     df = spark.createDataFrame([(0,),(1,)], ("i",))
     plus_one_udf = F.udf(plus_one, T.IntegerType())
-    df.withColumn("j", plus_one_udf("i")).show()
+    df = df.withColumn("j", plus_one_udf("i"))
+    df.show()
     result = df.select(
         F.avg("j").alias("avg"),
         F.max("j").alias("max"),
