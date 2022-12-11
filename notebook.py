@@ -31,7 +31,7 @@ code_path = [os.path.dirname(databricks_repo_sync_test.__file__), os.path.dirnam
 # COMMAND ----------
 
 with mlflow.start_run(experiment_id="2515170193180273", run_name=datetime.now().strftime("%Y/%m/%d %H:%M:%S")) as active_run:
-    print(active_run.run_info.id)
+    print(active_run.info.run_id)
     mlflow.pyfunc.log_model(
         code_path=code_path,
         python_model=my_model.ModelA(),
