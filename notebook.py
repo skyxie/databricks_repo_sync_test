@@ -26,22 +26,21 @@ display(df.withColumn("j", plus_one_udf("i")))
 
 # COMMAND ----------
 
+pdf = df.toPandas()
+pdf.loc[:, "j"] = pdf["i"].apply(databricks_repo_sync_test.plus_one)
+display(spark.createDataFrame(pdf, schema=T.StructType([T.StructField("i", T.IntegerType(), False), T.StructField("j", T.IntegerType(), False)])))
+
+# COMMAND ----------
+
 code_path = [os.path.dirname(databricks_repo_sync_test.__file__), os.path.dirname(my_model.__file__)]
 
 # COMMAND ----------
 
 with mlflow.start_run(experiment_id="2515170193180273", run_name=datetime.now().strftime("%Y/%m/%d %H:%M:%S")) as active_run:
     print(active_run.info.run_id)
-    mlflow.pyfunc.log_model(
-        code_path=code_path,
-        python_model=my_model.ModelA(),
-        artifact_path="model_a"
-    )
-    mlflow.pyfunc.log_model(
-        code_path=code_path,
-        python_model=my_model.ModelB(),
-        artifact_path="model_b"
-    )
+    mlflow.pyfunc.log_model(code_path=code_path, python_model=my_model.ModelA(), artifact_path="model_a")
+    mlflow.pyfunc.log_model(code_path=code_path, python_model=my_model.ModelB(), artifact_path="model_b")
+    mlflow.pyfunc.log_model(code_path=code_path, python_model=my_model.ModelC(), artifact_path="model_c")
 
 # COMMAND ----------
 
